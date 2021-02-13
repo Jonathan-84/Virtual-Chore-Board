@@ -3,6 +3,7 @@ VALUES ('Take out Trash',10),
 ('Walk Dog',50),
 ('Clean Bedroom',5),
 ('Do the dishes',10),
+('Take out the Diaper Trash',125),
 ('Take out Trash',10),
 ('Clean the Attic',30);
 
