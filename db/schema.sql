@@ -17,7 +17,7 @@ CREATE TABLE tasks (
     task_points INTEGER NOT NULL
 );
 
-CREATE TABLE child  (
+CREATE TABLE kids  (
    id INTEGER PRIMARY KEY AUTO_INCREMENT,
     child_name VARCHAR(30) NOT NULL,
     current_points INTEGER NOT NULL,

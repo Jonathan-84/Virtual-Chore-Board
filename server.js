@@ -9,3 +9,8 @@ app.get('/', function (req, res) {
 app.listen(process.env.PORT || 4000, function () {
     console.log('Node app is working!');
 });
+
+// turn on connection to database and server
+sequelize.sync({ force: false }).then(() => {
+    app.listen(PORT, () => console.log('Now listening'));
+  });
