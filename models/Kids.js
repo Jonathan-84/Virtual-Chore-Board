@@ -1,13 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-Kids.hasMany(Task, {
-    foreignKey: 'Kids_id'
-  });
-
-  Tasks.belongsTo(Kids, {
-    foreignKey: 'Kids_id',
-  });
 // create our Post model
 class Kids extends Model {
 
@@ -33,7 +26,15 @@ Kids.init(
              allowNull: true, 
              unique: true,
             },
-        task_id: {
+/// Add way to tie kids to the specific users
+            Users_id: {
+                type: DataTypes.INTEGER,
+                references: {
+                  model: 'users',
+                  key: 'id'
+                }
+              }
+    /*    task_id: {
               type: DataTypes.INTEGER,
               references: {
                   model: 'Tasks',
@@ -47,7 +48,7 @@ Kids.init(
 
             }
         }
-    
+    */
     },
     {
     
