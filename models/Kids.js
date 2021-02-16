@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
+
 // create our Post model
 class Kids extends Model {
 
@@ -27,34 +28,35 @@ Kids.init(
              unique: true,
             },
 /// Add way to tie kids to the specific users
-            Users_id: {
+         users_id: {
                 type: DataTypes.INTEGER,
                 references: {
                   model: 'users',
                   key: 'id'
                 }
-              }
-    /*    task_id: {
+              },
+        task_id: {
               type: DataTypes.INTEGER,
               references: {
-                  model: 'Tasks',
+                  model: 'tasks',
                   key: 'id'
               }
              },
-        task_name: {
+ /*     task_name: {
             type: DataTypes.STRING,
             references: {
                 model: 'Tasks',
 
             }
-        }
-    */
+        }*/
+    
     },
     {
     
         sequelize,
-        modelName: 'Kids',
+        modelName: 'kids',
         freezeTableName: true,
+        timestamps: false,
         underscored: true
     
 }

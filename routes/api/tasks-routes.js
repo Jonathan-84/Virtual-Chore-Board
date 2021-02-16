@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { Users } = require('../../models');
+const { Kids } = require('../../models');
 
-// GET /api/users
+// GET /api/tasks
 router.get('/', (req, res) => {
     // Access our User model and run .findAll() method)
-    Users.findAll()
+    Tasks.findAll()
       .then(dbUserData => res.json(dbUserData))
       .catch(err => {
         console.log(err);
@@ -12,12 +12,12 @@ router.get('/', (req, res) => {
       });
   });
 
-// GET /api/users/1
+// GET /api/tasks/1
 router.get('/:id', (req, res) => {
-    Users.findOne({
+    Tasks.findOne({
       where: {
         id: req.params.id
-      }, include:[Kids]
+      }
     })
       .then(dbUserData => {
         if (!dbUserData) {
@@ -32,14 +32,14 @@ router.get('/:id', (req, res) => {
       })
       });
 
-// POST /api/users
+// POST /api/tasks
 router.post('/', (req, res) => {
     // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234', role:"Uncle"}
-    Users.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-      role: req.body.role
+    Tasks.create({
+      task_name: req.body.task_name,
+      task_points: req.body.task_points,
+      Users_id: req.body.Users_id,
+      Kids_id: req.body.Kids_id
     })
       .then(dbUserData => res.json(dbUserData))
       .catch(err => {
@@ -48,13 +48,12 @@ router.post('/', (req, res) => {
       });
   });
 
-// PUT /api/users/1
+// PUT /api/tasks/1
 router.put('/:id', (req, res) => {
     // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234', role: 'Uncle'}
   
     // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
-    Users.update(req.body, {
-      individualHooks: true,
+    Tasks.update(req.body, {
       where: {
         id: req.params.id
       }
@@ -72,31 +71,9 @@ router.put('/:id', (req, res) => {
       });
   });
 
-  router.post('/login', (req, res) => {
-    // expects {email: 'lernantino@gmail.com', password: 'password1234'}
-    Users.findOne({
-      where: {
-        email: req.body.email
-      }
-    }).then(dbUserData => {
-      if (!dbUserData) {
-        res.status(400).json({ message: 'No user with that email address!' });
-        return;
-      }
-  
-      const validPassword = dbUserData.checkPassword(req.body.password);
-      if (!validPassword) {
-        res.status(400).json({ message: 'Incorrect password!' });
-        return;
-      }
-  
-      res.json({ user: dbUserData, message: 'You are now logged in!' });
-    });
-  });
-
-// DELETE /api/users/1
+// DELETE /api/tasks/1
 router.delete('/:id', (req, res) => {
-    Users.destroy({
+    Tasks.destroy({
       where: {
         id: req.params.id
       }

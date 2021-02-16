@@ -22,19 +22,28 @@ Tasks.init(
             allowNull: false,
          },
     
-         Users_id: {
+        users_id: {
         type: DataTypes.INTEGER,
         references: {
           model: 'users',
           key: 'id'
         }
-      }
     },
+    // This was added after tutoring session- not sure if I need this
+        kids_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'kids',
+        key: 'id'
+      }
+    }
+  },
     {
     
         sequelize,
-        modelName: 'Tasks',
+        modelName: 'tasks',
         freezeTableName: true,
+        timestamps: false,
         underscored: true
     
 }

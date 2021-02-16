@@ -1,10 +1,22 @@
 const router = require('express').Router();
-const { Users } = require('../../models');
+const { Kids, Users, Tasks } = require('../../models');
 
-// GET /api/users
+// GET /api/kids
 router.get('/', (req, res) => {
     // Access our User model and run .findAll() method)
-    Users.findAll()
+    Kids.findAll({
+      attributes: ['id', 'child_name', 'current_points', 'banked_points'],
+      include: [
+        {
+          model: users,
+          attributes: ['name']
+        },
+        {
+          model: tasks,
+          attributes: ['task_name']
+        }
+      ]
+      })
       .then(dbUserData => res.json(dbUserData))
       .catch(err => {
         console.log(err);
@@ -12,12 +24,24 @@ router.get('/', (req, res) => {
       });
   });
 
-// GET /api/users/1
+// GET /api/kids/1
 router.get('/:id', (req, res) => {
-    Users.findOne({
+    Kids.findOne({
       where: {
         id: req.params.id
-      }, include:[Kids]
+      },
+      attributes: ['id', 'child_name', 'current_points', 'banked_points'],
+      include: [
+        {
+          model: Users,
+          attributes: ['name']
+        },
+        {
+                model: Tasks,
+                attributes: ['id, task_name']
+              },
+      ]
+
     })
       .then(dbUserData => {
         if (!dbUserData) {
@@ -32,14 +56,14 @@ router.get('/:id', (req, res) => {
       })
       });
 
-// POST /api/users
+// POST /api/kids
 router.post('/', (req, res) => {
     // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234', role:"Uncle"}
-    Users.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-      role: req.body.role
+    Kids.create({
+      child_name: req.body.child_name,
+      current_points: req.body.current_points,
+      banked_points: req.body.banked_points,
+      Users_id: req.body.Users_id
     })
       .then(dbUserData => res.json(dbUserData))
       .catch(err => {
@@ -48,13 +72,12 @@ router.post('/', (req, res) => {
       });
   });
 
-// PUT /api/users/1
+// PUT /api/kids/1
 router.put('/:id', (req, res) => {
     // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234', role: 'Uncle'}
   
     // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
-    Users.update(req.body, {
-      individualHooks: true,
+    Kids.update(req.body, {
       where: {
         id: req.params.id
       }
@@ -72,31 +95,9 @@ router.put('/:id', (req, res) => {
       });
   });
 
-  router.post('/login', (req, res) => {
-    // expects {email: 'lernantino@gmail.com', password: 'password1234'}
-    Users.findOne({
-      where: {
-        email: req.body.email
-      }
-    }).then(dbUserData => {
-      if (!dbUserData) {
-        res.status(400).json({ message: 'No user with that email address!' });
-        return;
-      }
-  
-      const validPassword = dbUserData.checkPassword(req.body.password);
-      if (!validPassword) {
-        res.status(400).json({ message: 'Incorrect password!' });
-        return;
-      }
-  
-      res.json({ user: dbUserData, message: 'You are now logged in!' });
-    });
-  });
-
-// DELETE /api/users/1
+// DELETE /api/kids/1
 router.delete('/:id', (req, res) => {
-    Users.destroy({
+    Kids.destroy({
       where: {
         id: req.params.id
       }
