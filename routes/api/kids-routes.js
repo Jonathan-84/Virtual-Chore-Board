@@ -8,11 +8,11 @@ router.get('/', (req, res) => {
       attributes: ['id', 'child_name', 'current_points', 'banked_points'],
       include: [
         {
-          model: users,
+          model: Users,
           attributes: ['name']
         },
         {
-          model: tasks,
+          model: Tasks,
           attributes: ['task_name']
         }
       ]
@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
       where: {
         id: req.params.id
       },
-      attributes: ['id', 'child_name', 'current_points', 'banked_points'],
+      attributes: ['id', 'child_name', 'current_points', 'banked_points', 'users_id'],
       include: [
         {
           model: Users,
@@ -63,7 +63,8 @@ router.post('/', (req, res) => {
       child_name: req.body.child_name,
       current_points: req.body.current_points,
       banked_points: req.body.banked_points,
-      Users_id: req.body.Users_id
+      users_id: req.body.Users_id,
+      tasks_id: req.body.Tasks_id
     })
       .then(dbUserData => res.json(dbUserData))
       .catch(err => {

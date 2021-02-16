@@ -27,7 +27,7 @@ Kids.init(
              allowNull: true, 
              unique: true,
             },
-/// Add way to tie kids to the specific users
+/// Add way to tie kids to the specific users { still need to show this somehow}
          users_id: {
                 type: DataTypes.INTEGER,
                 references: {
@@ -35,7 +35,7 @@ Kids.init(
                   key: 'id'
                 }
               },
-        task_id: {
+    /*    task_id: {
               type: DataTypes.INTEGER,
               references: {
                   model: 'tasks',

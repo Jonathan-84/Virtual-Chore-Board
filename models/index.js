@@ -7,7 +7,7 @@ const Tasks = require("./Tasks");
     foreignKey: "users_id",
   });
 
-  Kids.hasMany(Tasks, {
+ Kids.hasMany(Tasks, {
     foreignKey: "kids_id",
   });
 
@@ -16,16 +16,16 @@ const Tasks = require("./Tasks");
     onDelete: "cascade",
   });
 
-  Users.hasMany(Tasks, {
+  /*Users.hasMany(Tasks, {
     foreignKey: "users_id"
-  });
-
+  });*/
+/*
   Tasks.belongsToMany( Kids, {
     through: Users,
     as: "task_name",
     foreignKey: "tasks_id"
   });
-
+*/
 /* Tasks.belongsTo(Users, {
     through: Kids,
   as: 'task name',

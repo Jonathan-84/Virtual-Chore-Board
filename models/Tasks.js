@@ -21,7 +21,7 @@ Tasks.init(
             type: DataTypes.INTEGER,
             allowNull: false,
          },
-    
+    // will likely need to change this too- Post worked after removing the part below
         users_id: {
         type: DataTypes.INTEGER,
         references: {
@@ -30,7 +30,7 @@ Tasks.init(
         }
     },
     // This was added after tutoring session- not sure if I need this
-        kids_id: {
+      kids_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'kids',
