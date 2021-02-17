@@ -8,7 +8,7 @@ CREATE TABLE users (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(30),
     email VARCHAR(30),
-    password VARCHAR(30),
+    password VARCHAR(75),
     role VARCHAR(30)
 );
 

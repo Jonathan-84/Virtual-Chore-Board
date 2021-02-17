@@ -23,7 +23,7 @@ Tasks.init(
          },
 
     // This was added after tutoring session- not sure if I need this
-      kids_id: {
+      Kids_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'kids',

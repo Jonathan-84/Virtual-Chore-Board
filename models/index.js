@@ -28,6 +28,6 @@ const Tasks = require("./Tasks");
  Tasks.belongsToMany(Users, {
     through: Kids,
   foreignKey: 'kids_id'
-  });
-*/
+  });*/
+
 module.exports = { Users, Kids, Tasks };
