@@ -2,7 +2,7 @@ const Users = require("./Users");
 const Kids = require("./Kids");
 const Tasks = require("./Tasks");
 
-
+//Kids routes are all good
   Kids.belongsTo(Users, {
     foreignKey: "users_id",
   });
@@ -15,21 +15,19 @@ const Tasks = require("./Tasks");
     foreignKey: "users_id",
     onDelete: "cascade",
   });
-
-  /*Users.hasMany(Tasks, {
-    foreignKey: "users_id"
-  });*/
 /*
-  Tasks.belongsToMany( Kids, {
-    through: Users,
-    as: "task_name",
-    foreignKey: "tasks_id"
-  });
-*/
-/* Tasks.belongsTo(Users, {
+  Users.hasMany(Tasks, {
     through: Kids,
-  as: 'task name',
-  foreignKey: 'task_name'
+    foreignKey: "users_id"
+  })
+*/
+  Tasks.belongsTo(Kids, {
+    foreignKey: "kids_id"
+  });
+/*
+ Tasks.belongsToMany(Users, {
+    through: Kids,
+  foreignKey: 'kids_id'
   });
 */
 module.exports = { Users, Kids, Tasks };

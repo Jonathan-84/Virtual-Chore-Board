@@ -5,7 +5,12 @@ const { Kids, Users, Tasks } = require('../../models');
 router.get('/', (req, res) => {
     // Access our User model and run .findAll() method)
     Kids.findAll({
-      attributes: ['id', 'child_name', 'current_points', 'banked_points'],
+      attributes: [
+        'id', 
+        'child_name', 
+        'current_points', 
+        'banked_points'
+      ],
       include: [
         {
           model: Users,
@@ -38,7 +43,7 @@ router.get('/:id', (req, res) => {
         },
         {
                 model: Tasks,
-                attributes: ['id, task_name']
+                attributes: ['task_name']
               },
       ]
 

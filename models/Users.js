@@ -19,15 +19,15 @@ Users.init(
         autoIncrement: true
     },
     name: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(30),
         allowNull: false,
      },
      role: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(30),
         allowNull: false,
      },
      email: {
-         type:DataTypes.STRING,
+         type:DataTypes.STRING(30),
          allowNull: false, 
          unique: true,
          validate: {
@@ -35,11 +35,11 @@ Users.init(
          }
         },
     password: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(30),
         allowNull: false, 
         validate: {
             //means password must be at least 4 characters long
-            len: [4]
+            len: [4,30]
         }
     }
 

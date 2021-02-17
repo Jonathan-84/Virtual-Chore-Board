@@ -15,7 +15,7 @@ Kids.init(
             autoIncrement: true
         },
         child_name: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(30),
             allowNull: false,
          },
          current_points: {
@@ -34,22 +34,7 @@ Kids.init(
                   model: 'users',
                   key: 'id'
                 }
-              },
-    /*    task_id: {
-              type: DataTypes.INTEGER,
-              references: {
-                  model: 'tasks',
-                  key: 'id'
-              }
-             },
- /*     task_name: {
-            type: DataTypes.STRING,
-            references: {
-                model: 'Tasks',
-
             }
-        }*/
-    
     },
     {
     

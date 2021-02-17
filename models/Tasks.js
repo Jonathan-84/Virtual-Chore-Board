@@ -14,21 +14,14 @@ Tasks.init(
             autoIncrement: true
         },
         task_name: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(30),
             allowNull: false,
          },
          task_points: {
             type: DataTypes.INTEGER,
             allowNull: false,
          },
-    // will likely need to change this too- Post worked after removing the part below
-        users_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'users',
-          key: 'id'
-        }
-    },
+
     // This was added after tutoring session- not sure if I need this
       kids_id: {
       type: DataTypes.INTEGER,
