@@ -10,7 +10,7 @@ INSERT INTO  kids (child_name, current_points, banked_points, users_id)
  ('Jimmy',2000, 0, 2)
 ;
 
-INSERT INTO tasks (task_name, task_points, kids_id) 
+INSERT INTO tasks (task_name, task_points,) 
 VALUES ('Take out Trash',10, 1),
 ('Walk Dog',50, 2),
 ('Clean Bedroom',5, 3),
