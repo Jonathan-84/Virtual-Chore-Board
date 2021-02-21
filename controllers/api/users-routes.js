@@ -29,8 +29,9 @@ router.get('/:id', (req, res) => {
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
+      })
       });
-    })
+
 // POST /api/users
 router.post('/', (req, res) => {
     // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234', role:"Uncle"}

@@ -1,0 +1,53 @@
+<div class="wrapper">
+    <div class="header">Virtual Chore Board</div>
+
+    <div class="notification is-link has-text-centered is-size-4"> Currently viewing {{parentName}}'s Household
+        Dashboard</div>
+    {{#each parentCard}}
+    <div>
+        <div>{{userId}}. {{parentName}}</div>
+        <div>parentEmail: {{parentEmail}}</div>
+    </div>
+    {{/each}}
+    ​
+    <div class="cards_wrap">
+        <!--Child To Do Card-->
+        <div class="card">
+            <header class="card-header has-background-link">
+                <p class="card-header-title has-text-white"> <b> {{childName}}'s open tasks </b> </p>
+            </header>
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="/to-do.JPG" alt="To do list">
+                </figure>
+            </div>
+            <div class="card-content has-background-link-light">
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                            <img src="/piggybank.JPG" alt="Points">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p class="title is-4">Current Tasks</p>
+                        <p class="subtitle is-6">{{childName}}'s Total Points: {{totalPoints}}</p>
+                    </div>
+                </div>
+                <div class="columns has-background-success-light">
+                    <!--List each Task Name-->
+                    <div class="column">
+                        {{#taskName}} ,
+                        * {{.}}
+                        {{/taskName}}
+                    </div>
+                    <!--List point values of each task-->
+                    <div class="column">
+                        {{#taskPoints}}
+                        * {{.}}
+                        {{/taskPoints}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
