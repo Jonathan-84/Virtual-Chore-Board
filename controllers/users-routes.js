@@ -2,6 +2,10 @@ const router = require("express").Router();
 const { Users } = require("../models");
 
 // GET /api/users
+router.get("/login", (req, res) => {
+  res.render("login");
+});
+
 router.get("/", (req, res) => {
   let parentCard = [
     {
