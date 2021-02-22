@@ -9,28 +9,19 @@ router.get("/login", (req, res) => {
 router.get("/", (req, res) => {
   let parentCard = [
     {
-      userId: "brdy",
+      userId: "brdy888",
       parentName: "braudy",
       parentEmail: "g",
     },
   ];
   let childCard = [
     {
-<<<<<<< HEAD
       userId: "a",
       childName: "a",
       totalPoints: "a",
       taskPoints: [12],
       taskName: [11],
       taskId: "e",
-=======
-      userId: "",
-      childName: "",
-      totalPoints: "",
-      taskints: [],
-      taskName: [],
-      taskId: "",
->>>>>>> 7b437669faca0c1f6b3cd11d6dd2c4b859413937
     },
     {
       userId: "q",
@@ -54,8 +45,8 @@ router.get("/", (req, res) => {
     childCard: childCard,
     parentCard: parentCard,
   });
-  
-/// double check this change works...
+
+  /// double check this change works...
   // Access our User model and run .findAll() method)
   // Users.findAll()
   //   .then((dbUserData) => res.json(dbUserData))

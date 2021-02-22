@@ -1,5 +1,5 @@
-var express = require('express');
-const session = require('express-session');
+var express = require("express");
+const session = require("express-session");
 var app = express();
 var path = require("path");
 const sequelize = require("./config/connection");
@@ -24,20 +24,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 /// add express sessions language
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
-/*
+const choresDB = require("./config/connection");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+
 const sess = {
-  secret: 'UData',
+  secret: "UData",
   cookie: {},
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
-     db: choresDB
-  })
+    db: choresDB,
+  }),
 };
 
 app.use(session(sess));
-*/
 
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {
