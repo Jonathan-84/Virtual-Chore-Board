@@ -9,7 +9,7 @@ router.get("/login", (req, res) => {
 router.get("/", (req, res) => {
   let parentCard = [
     {
-      userId: "brdy",
+      userId: "brdy888",
       parentName: "braudy",
       parentEmail: "g",
     },
@@ -45,8 +45,8 @@ router.get("/", (req, res) => {
     childCard: childCard,
     parentCard: parentCard,
   });
-  
-/// double check this change works...
+
+  /// double check this change works...
   // Access our User model and run .findAll() method)
   // Users.findAll()
   //   .then((dbUserData) => res.json(dbUserData))
