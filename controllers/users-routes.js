@@ -16,21 +16,12 @@ router.get("/", (req, res) => {
   ];
   let childCard = [
     {
-<<<<<<< HEAD
       userId: "a",
       childName: "a",
       totalPoints: "a",
       taskPoints: [12],
       taskName: [11],
       taskId: "e",
-=======
-      userId: "",
-      childName: "",
-      totalPoints: "",
-      taskints: [],
-      taskName: [],
-      taskId: "",
->>>>>>> 7b437669faca0c1f6b3cd11d6dd2c4b859413937
     },
     {
       userId: "q",
