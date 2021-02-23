@@ -7,54 +7,46 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/", (req, res) => {
-  let parentCard = [
-    {
-      userId: "brdy888",
-      parentName: "braudy",
-      parentEmail: "g",
-    },
-  ];
-  let childCard = [
-    {
-      userId: "a",
-      childName: "a",
-      totalPoints: "a",
-      taskPoints: [12],
-      taskName: [11],
-      taskId: "e",
-    },
-    {
-      userId: "q",
-      childName: "w",
-      totalPoints: "e",
-      taskPoints: [14],
-      taskName: [55],
-      taskId: "g",
-    },
-    {
-      userId: "h",
-      childName: "h",
-      totalPoints: "h",
-      taskPoints: [55],
-      taskName: [5],
-      taskId: "g",
-    },
-  ];
-
-  res.render("index", {
-    childCard: childCard,
-    parentCard: parentCard,
-  });
-
-  /// double check this change works...
-  // Access our User model and run .findAll() method)
-  // Users.findAll()
-  //   .then((dbUserData) => res.json(dbUserData))
-  //   .catch((err) => {
-  //     console.log(err);
-  //     res.status(500).json(err);
-  //   });
+  res.render("homepage");
 });
+// let parentCard = [
+//   {
+//     userId: "brdy888",
+//     parentName: "braudy",
+//     parentEmail: "g",
+//   },
+// ];
+// let childCard = [
+//   {
+//     userId: "a",
+//     childName: "a",
+//     totalPoints: "a",
+//     taskPoints: [12],
+//     taskName: [11],
+//     taskId: "e",
+//   },
+//   {
+//     userId: "q",
+//     childName: "w",
+//     totalPoints: "e",
+//     taskPoints: [14],
+//     taskName: [55],
+//     taskId: "g",
+//   },
+//   {
+//     userId: "h",
+//     childName: "h",
+//     totalPoints: "h",
+//     taskPoints: [55],
+//     taskName: [5],
+//     taskId: "g",
+//   },
+// ];
+
+// res.render("index", {
+//   childCard: childCard,
+//   parentCard: parentCard,
+// });
 
 // GET /api/users/1
 router.get("/:id", (req, res) => {

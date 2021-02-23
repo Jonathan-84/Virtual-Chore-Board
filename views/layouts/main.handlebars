@@ -25,28 +25,23 @@
 
   <div class="wrapper">
     <header>
-
-      <nav class="navbar fixed-top">
-        <button class="btn"><i class=""></i> Home</button>
-        <button class="btn"><i class=""></i> Menu</button>
-      </nav>
       <h1>
-        <a href="/">Virtual Chore Board</a>
+        <div>Virtual Chore Board</div>
       </h1>
       <nav>
-        <a href="/login">login</a>
+        {{#if loggedIn}}
+        <a href="/homepage">homepage</a>
+        <button type="button" id="logout" class="btn btn-secondary btn-lg btn-block">logout</button>
+        {{else}}
+        <a href="/login">
+          <button type="button" class="btn btn-primary btn-lg btn-block">Login or Sign-up</button>
+        </a>
+        {{/if}}
       </nav>
     </header>
     <!-- Dummy home button/title/landing page empty cards for the tasks? -->
     <div id="container">
       <div id="main">
-        <!-- Main Navigation -->
-        <header>
-          <nav class="navbar fixed-top">
-            <button class="btn"><i class=""></i> Home</button>
-            <button class="btn"><i class=""></i> Menu</button>
-          </nav>
-        </header>
         <!-- Main Layout -->
       </div>
       <main>
@@ -56,7 +51,10 @@
         Thanks for visiting!
       </footer>
     </div>
-
+  </div>
+  {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}
 </body>
 
 </html>
