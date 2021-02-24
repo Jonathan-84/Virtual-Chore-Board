@@ -1,8 +1,14 @@
 const router = require("express").Router();
+const sequelize = require("../config/connection");
 const { Users, Tasks, Kids } = require("../models");
 
 // GET /api/users
 router.get("/login", (req, res) => {
+  // if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  // }
+
   res.render("login");
 });
 

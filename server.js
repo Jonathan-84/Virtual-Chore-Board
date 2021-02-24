@@ -1,31 +1,33 @@
-var express = require("express");
+const path = require("path");
+const express = require("express");
 const session = require("express-session");
-var app = express();
-var path = require("path");
-const sequelize = require("./config/connection");
-const routes = require("./controllers/");
 const exphbs = require("express-handlebars");
 
+// const routes = require("./controllers/");
+
+const app = express();
 const PORT = process.env.PORT || 3001;
 
-const hbs = exphbs.create({});
+const sequelize = require("./config/connection");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
-// app.engine("handlebars", hbs.engine);
+// const hbs = exphbs.create({});
+
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+// app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
-
-// Host Static Files so css and js files can be retrieved
-app.use(express.static(path.join(__dirname, "/public")));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// Host Static Files so css and js files can be retrieved
+app.use(express.static(path.join(__dirname, "/public")));
 
 // turn on routes
-app.use(routes);
+app.use(require("./controllers/"));
+// app.use(routes);
 
 /// add express sessions language
 const choresDB = require("./config/connection");
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const sess = {
   secret: "UData",
